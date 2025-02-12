@@ -1,15 +1,14 @@
 {
-  "name": "ReStock",
+  "name": "restock",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Parker Shumard",
+  "homepage": "https://parkershumard.com/",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "dev": "ng test --no-progress --browsers=ChromeHeadless",
+    "test": "npm run lint && npm run dev -- --no-watch --code-coverage"
   },
   "private": true,
   "dependencies": {
@@ -59,6 +58,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.6.3"
-  },
-  "description": "An Ionic project"
+  }
 }
