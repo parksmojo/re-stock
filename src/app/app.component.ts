@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonApp, IonMenu, IonRouterOutlet } from '@ionic/angular/standalone';
-import { SettingsComponent } from './component/settings/settings.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @Component({
   selector: 'app-root',
