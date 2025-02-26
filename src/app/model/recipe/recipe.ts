@@ -17,4 +17,8 @@ export class Recipe {
     this._description = description;
     this._ingredients = ingredients;
   }
+
+  get name(): string {
+    return this._name;
+  }
 }

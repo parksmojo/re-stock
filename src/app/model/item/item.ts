@@ -37,4 +37,8 @@ export class Item {
     this._category = category;
     this._store = store;
   }
+
+  get name(): string {
+    return this._name;
+  }
 }
