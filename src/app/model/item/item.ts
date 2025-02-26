@@ -1,44 +1,49 @@
 export interface ItemData {
-  id: number;
   name: string;
-  quantity: number;
-  price: number;
-  purpose: string;
-  expiration: Date;
-  category: string;
-  store: string;
+  quantity?: number;
+  category?: string;
+  store?: string;
+  purpose?: string;
+  expiration?: Date;
+  price?: number;
 }
 
 export class Item {
-  private _id: number;
   private _name: string;
   private _quantity: number;
-  private _price: number;
-  private _purpose: string;
-  private _expiration: Date;
   private _category: string;
   private _store: string;
+  private _purpose: string | null;
+  private _expiration: Date | null;
+  private _price: number | null;
 
-  constructor(
-    name: string,
-    quantity: number,
-    price: number,
-    purpose: string,
-    expiration: Date,
-    category: string,
-    store: string
-  ) {
-    this._id = -1;
-    this._name = name;
-    this._quantity = quantity;
-    this._price = price;
-    this._purpose = purpose;
-    this._expiration = expiration;
-    this._category = category;
-    this._store = store;
+  constructor(data: ItemData) {
+    this._name = data.name;
+    this._quantity = data.quantity ?? 1;
+    this._category = data.category ?? 'Other';
+    this._store = data.store ?? 'Any';
+    this._purpose = data.purpose ?? null;
+    this._expiration = data.expiration ?? null;
+    this._price = data.price ?? null;
   }
 
   get name(): string {
     return this._name;
+  }
+
+  get data(): ItemData {
+    return {
+      name: this._name,
+      quantity: this._quantity,
+      category: this._category,
+      store: this._store,
+      purpose: this._purpose ?? undefined,
+      expiration: this._expiration ?? undefined,
+      price: this._price ?? undefined,
+    };
+  }
+
+  public equals(other: Item): boolean {
+    return this._name === other._name;
   }
 }

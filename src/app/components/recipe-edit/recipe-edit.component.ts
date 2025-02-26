@@ -1,4 +1,4 @@
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   IonButton,
@@ -10,7 +10,6 @@ import {
   IonToolbar,
   ModalController,
 } from '@ionic/angular/standalone';
-import { Item } from 'src/app/model/item/item';
 import { Recipe } from 'src/app/model/recipe/recipe';
 
 @Component({
@@ -31,7 +30,6 @@ import { Recipe } from 'src/app/model/recipe/recipe';
 export class RecipeEditComponent implements OnInit {
   @Input()
   recipe: Recipe | null = null;
-  name = 'no';
 
   constructor(private modalCtrl: ModalController) {}
 

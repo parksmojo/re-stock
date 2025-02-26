@@ -17,14 +17,19 @@ import { Recipe } from 'src/app/model/recipe/recipe';
   imports: [IonContent, HeaderComponent, IonButton],
 })
 export class RecipesPage implements OnInit {
+  testRecipe = new Recipe({
+    name: 'Test Recipe',
+    description: 'Test Description',
+  });
+
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
 
-  async editRecipe() {
+  async editRecipe(recipe: Recipe) {
     const modal = await this.modalCtrl.create({
       component: RecipeEditComponent,
-      componentProps: { recipe: new Recipe('test', 'test', [1, 2, 3]) },
+      componentProps: { recipe },
     });
     modal.present();
 
