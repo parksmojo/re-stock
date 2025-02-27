@@ -16,12 +16,12 @@ export class AuthService {
 
   public async register(email: string, password: string): Promise<void> {
     console.log('Auth registering user with email: ' + email);
-    await createUserWithEmailAndPassword(this.auth, email, password);
+    // await createUserWithEmailAndPassword(this.auth, email, password);
   }
 
   public async login(email: string, password: string): Promise<void> {
     console.log('Auth logging in user with email: ' + email);
-    await signInWithEmailAndPassword(this.auth, email, password);
+    // await signInWithEmailAndPassword(this.auth, email, password);
   }
 
   public getCurrentUser(): User | null {
@@ -34,6 +34,6 @@ export class AuthService {
 
   public async logout(): Promise<void> {
     console.log('Auth logging out user');
-    await signOut(this.auth);
+    // await signOut(this.auth);
   }
 }
