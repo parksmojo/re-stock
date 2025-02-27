@@ -12,5 +12,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 export class GroceryListPage implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('GroceryListPage initialized');
+  }
 }

@@ -31,5 +31,7 @@ export class HeaderComponent implements OnInit {
     addIcons({ menu, close });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('HeaderComponent initialized');
+  }
 }

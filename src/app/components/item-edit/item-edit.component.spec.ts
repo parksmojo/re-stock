@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ItemEditComponent } from './item-edit.component';
+import { ModalController } from '@ionic/angular/standalone';
 
 describe('ItemEditComponent', () => {
   let component: ItemEditComponent;
@@ -9,8 +10,8 @@ describe('ItemEditComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemEditComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), ItemEditComponent],
+      providers: [ModalController],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ItemEditComponent);

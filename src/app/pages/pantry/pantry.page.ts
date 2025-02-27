@@ -12,5 +12,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 export class PantryPage implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('PantryPage initialized');
+  }
 }

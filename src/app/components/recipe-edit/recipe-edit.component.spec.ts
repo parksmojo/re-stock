@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { RecipeEditComponent } from './recipe-edit.component';
+import { ModalController } from '@ionic/angular/standalone';
 
 describe('RecipeEditComponent', () => {
   let component: RecipeEditComponent;
@@ -9,8 +10,8 @@ describe('RecipeEditComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecipeEditComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), RecipeEditComponent],
+      providers: [ModalController],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RecipeEditComponent);

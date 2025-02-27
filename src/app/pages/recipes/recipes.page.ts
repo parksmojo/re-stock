@@ -24,7 +24,9 @@ export class RecipesPage implements OnInit {
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('RecipesPage initialized');
+  }
 
   async editRecipe(recipe: Recipe) {
     const modal = await this.modalCtrl.create({

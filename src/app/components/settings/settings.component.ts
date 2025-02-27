@@ -15,5 +15,7 @@ export class SettingsComponent implements OnInit {
     addIcons({ close });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('SettingsComponent initialized');
+  }
 }

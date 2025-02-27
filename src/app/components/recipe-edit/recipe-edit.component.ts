@@ -33,7 +33,9 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('RecipeEditComponent initialized');
+  }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');

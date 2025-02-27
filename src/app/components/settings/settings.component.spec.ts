@@ -9,8 +9,7 @@ describe('SettingsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), SettingsComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SettingsComponent);
