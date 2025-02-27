@@ -5,10 +5,10 @@
     </ion-thumbnail>
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Register</ion-card-title>
+        <ion-card-title>{{ authType.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
           <ion-item>
             <ion-input
               type="email"
@@ -31,12 +31,15 @@
           <ion-button
             expand="full"
             type="submit"
-            [disabled]="registerForm.invalid"
+            [disabled]="inputForm.invalid"
           >
-            Register
+            {{ authType.name }}
           </ion-button>
         </form>
       </ion-card-content>
     </ion-card>
+    <ion-button expand="full" color="light" (click)="toggleAuthType()">
+      {{ authType.toggleMessage}}
+    </ion-button>
   </div>
 </ion-content>

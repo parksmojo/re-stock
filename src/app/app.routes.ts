@@ -2,14 +2,9 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'login',
+    path: 'auth',
     loadComponent: () =>
-      import('./pages/login/login.page').then((m) => m.LoginPage),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./pages/register/register.page').then((m) => m.RegisterPage),
+      import('./pages/auth/auth.page').then((m) => m.AuthPage),
   },
   {
     path: 'choose-pantry',
@@ -23,6 +18,6 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./components/tabs/tabs.routes').then((m) => m.routes),
   },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
