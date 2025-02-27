@@ -1,2 +1,7 @@
 <app-header [title]="'Settings'" [menuIcon]="'close'" />
-<ion-content class="ion-padding">This is the menu content.</ion-content>
+
+<div class="content ion-padding">
+  <ion-menu-toggle>
+    <ion-button expand="full" (click)="logout()">Logout</ion-button>
+  </ion-menu-toggle>
+</div>

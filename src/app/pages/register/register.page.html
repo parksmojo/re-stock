@@ -25,7 +25,9 @@
               labelPlacement="floating"
             />
           </ion-item>
-
+          @if (errorMessage) {
+          <ion-text color="danger">{{ errorMessage }}</ion-text>
+          }
           <ion-button
             expand="full"
             type="submit"

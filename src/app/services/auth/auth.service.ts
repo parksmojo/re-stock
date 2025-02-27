@@ -24,16 +24,16 @@ export class AuthService {
     await signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  public async logout(): Promise<void> {
-    console.log('Auth logging out user');
-    await signOut(this.auth);
-  }
-
   public getCurrentUser(): User | null {
     return this.auth.currentUser;
   }
 
   public isSignedIn(): boolean {
     return !!this.getCurrentUser();
+  }
+
+  public async logout(): Promise<void> {
+    console.log('Auth logging out user');
+    await signOut(this.auth);
   }
 }

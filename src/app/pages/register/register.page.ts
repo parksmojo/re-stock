@@ -16,6 +16,7 @@ import {
   IonInput,
   IonThumbnail,
   IonItem,
+  IonText,
 } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
@@ -39,9 +40,12 @@ import { Router } from '@angular/router';
     IonButton,
     IonThumbnail,
     IonItem,
+    IonText,
   ],
 })
 export class RegisterPage implements OnInit {
+  errorMessage: string | null = null;
+
   constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
@@ -56,8 +60,22 @@ export class RegisterPage implements OnInit {
     ]),
   });
 
-  onSubmit() {
-    console.log('Form submitted');
-    this.router.navigate(['/']);
+  async onSubmit() {
+    try {
+      if (!this.registerForm.valid) {
+        throw new Error('Form incomplete');
+      }
+      this.registerForm.disable();
+      await this.auth.register(
+        this.registerForm.value.email!,
+        this.registerForm.value.password!
+      );
+      this.router.navigate(['/']);
+    } catch (error) {
+      this.registerForm.enable();
+      this.registerForm.reset();
+      this.errorMessage = 'Error registering user';
+      console.error(error);
+    }
   }
 }
