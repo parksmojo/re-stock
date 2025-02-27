@@ -1,0 +1,23 @@
+.centered-content {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  ion-card {
+    --background: var(--ion-color-medium);
+    width: 80%;
+    max-width: 400px;
+
+    ion-card-title {
+      color: var(--ion-color-dark);
+      text-align: center;
+    }
+
+    ion-item {
+      --background: var(--ion-color-medium);
+    }
+  }
+}

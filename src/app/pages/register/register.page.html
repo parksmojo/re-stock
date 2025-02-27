@@ -1,13 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="centered-content">
+    <ion-thumbnail>
+      <img alt="Logo image" src="../../../assets/icon/favicon.ico" />
+    </ion-thumbnail>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Register</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-input
+              type="email"
+              formControlName="email"
+              label="Email"
+              labelPlacement="floating"
+            />
+          </ion-item>
+          <ion-item>
+            <ion-input
+              type="password"
+              formControlName="password"
+              label="Password"
+              labelPlacement="floating"
+            />
+          </ion-item>
+
+          <ion-button
+            expand="full"
+            type="submit"
+            [disabled]="registerForm.invalid"
+          >
+            Register
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
