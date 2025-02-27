@@ -19,9 +19,10 @@ export const routes: Routes = [
       ),
   },
   {
-    path: '',
+    path: 'main',
     loadChildren: () =>
       import('./components/tabs/tabs.routes').then((m) => m.routes),
   },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

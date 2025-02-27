@@ -70,7 +70,7 @@ export class RegisterPage implements OnInit {
         this.registerForm.value.email!,
         this.registerForm.value.password!
       );
-      this.router.navigate(['/']);
+      this.router.navigate(['/main']);
     } catch (error) {
       this.registerForm.enable();
       this.registerForm.reset();
