@@ -21,8 +21,8 @@ export class Pantry {
   constructor(creatorEmail: string, code: string) {
     this._code = code;
     this._users = [creatorEmail];
-    this._stores = [];
-    this._categories = [];
+    this._stores = [...defaultStores];
+    this._categories = [...defaultCategories];
     this._items = [];
     this._recipes = [];
   }
@@ -52,3 +52,12 @@ export class Pantry {
     return pantry;
   }
 }
+
+const defaultStores = [
+  "Smith's",
+  'Costco',
+  "Trader Joe's",
+  'Walmart',
+  'Target',
+];
+const defaultCategories = ['Produce', 'Dairy', 'Meat', 'Bakery', 'Other'];
