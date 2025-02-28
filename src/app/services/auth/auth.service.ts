@@ -29,7 +29,7 @@ export class AuthService {
 
   public async googleLogin(): Promise<void> {
     console.log('Auth logging in user with Google');
-    await signInWithPopup(this.auth, this.provider);
+    // await signInWithPopup(this.auth, this.provider);
   }
 
   public getCurrentUser(): User | null {
