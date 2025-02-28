@@ -103,4 +103,9 @@ export class AuthPage implements OnInit {
       console.error(error);
     }
   }
+
+  async googleLogin() {
+    await this.auth.googleLogin();
+    this.router.navigate(['/main']);
+  }
 }
