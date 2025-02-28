@@ -99,13 +99,18 @@ export class AuthPage implements OnInit {
     } catch (error) {
       this.inputForm.enable();
       this.inputForm.reset();
-      this.errorMessage = 'Error registering user';
+      this.errorMessage = `Error during ${this.authType.name.toLowerCase()}`;
       console.error(error);
     }
   }
 
   async googleLogin() {
-    await this.auth.googleLogin();
-    this.router.navigate(['/main']);
+    try {
+      await this.auth.googleLogin();
+      this.router.navigate(['/main']);
+    } catch (error) {
+      console.error('Error during Google login:', error);
+      this.errorMessage = 'Error during Google login';
+    }
   }
 }
