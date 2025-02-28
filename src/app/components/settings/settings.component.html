@@ -1,7 +1,24 @@
 <app-header [title]="'Settings'" [menuIcon]="'close'" />
 
 <div class="content ion-padding">
-  <ion-menu-toggle>
-    <ion-button expand="full" (click)="logout()">Logout</ion-button>
-  </ion-menu-toggle>
+  <ion-item>
+    <div>
+      <ion-text><h4>Logged in as:</h4></ion-text>
+      <ion-text>
+        <p>{{ user?.email }}</p>
+      </ion-text>
+      <ion-menu-toggle>
+        <ion-button color="warning" expand="full" (click)="logout()">
+          Logout
+        </ion-button>
+      </ion-menu-toggle>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <ion-text><h5>Pantry code: XHTF</h5></ion-text>
+    <ion-button color="danger" slot="end" (click)="leavePantry()">
+      Leave
+    </ion-button>
+  </ion-item>
 </div>
