@@ -2,18 +2,18 @@ import { Item, ItemData } from '../item/item';
 
 export interface RecipeData {
   name: string;
-  description?: string;
   ingredients?: ItemData[];
+  note?: string;
 }
 
 export class Recipe {
   private _name: string;
-  private _description: string;
   private _ingredients: Item[];
+  private _note: string;
 
   constructor(data: RecipeData) {
     this._name = data.name;
-    this._description = data.description ?? '';
+    this._note = data.note ?? '';
     this._ingredients = data.ingredients?.map((data) => new Item(data)) ?? [];
   }
 
@@ -21,18 +21,22 @@ export class Recipe {
     return this._name;
   }
 
-  get description(): string {
-    return this._description;
+  get note(): string {
+    return this._note;
   }
 
   get ingredients(): ItemData[] {
     return this._ingredients;
   }
 
+  get ingredientString(): string {
+    return this._ingredients.map((item) => item.name).join(', ');
+  }
+
   get data(): RecipeData {
     return {
       name: this._name,
-      description: this._description,
+      note: this._note === '' ? undefined : this._note,
       ingredients: this._ingredients.map((item) => item.data),
     };
   }

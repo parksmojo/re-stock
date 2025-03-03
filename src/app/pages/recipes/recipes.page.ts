@@ -22,7 +22,7 @@ export class RecipesPage implements OnInit {
 
   testRecipe = new Recipe({
     name: 'Test Recipe',
-    description: 'Test Description',
+    note: 'Test Description',
   });
 
   constructor(db: DbService, private modalCtrl: ModalController) {

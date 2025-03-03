@@ -62,8 +62,15 @@ export class FakeData {
           { name: 'Chicken', store: 'Kroger' },
           { name: 'Tomato Sauce', store: 'Kroger' },
           { name: 'Cheese', store: 'Walmart' },
+          { name: 'Pot', store: 'Walmart' },
+          { name: 'Water', store: 'Walmart' },
+          { name: 'Salt', store: 'Walmart' },
+          { name: 'Pesto', store: 'Walmart' },
+          { name: 'Test', store: 'Walmart' },
+          { name: 'Spoon', store: 'Walmart' },
+          { name: 'Ur mom', store: 'Walmart' },
         ],
-        description: 'Cook pasta, cook chicken, mix together with sauce',
+        note: 'Use the leftover chicken',
       },
       {
         name: 'Quesadillas',
@@ -73,7 +80,7 @@ export class FakeData {
           { name: 'Tortillas', store: 'Walmart' },
           { name: 'Salsa', store: 'Target' },
         ],
-        description: 'Cook chicken, melt cheese on tortilla, add salsa',
+        note: 'best for lunch',
       },
       {
         name: 'Grilled Cheese',
@@ -82,7 +89,7 @@ export class FakeData {
           { name: 'Cheese', store: 'Walmart' },
           { name: 'Butter', store: 'Kroger' },
         ],
-        description: 'Butter bread, melt cheese between slices',
+        note: "Parker's favorite",
       },
       {
         name: 'Breakfast Burrito',
@@ -92,7 +99,6 @@ export class FakeData {
           { name: 'Cheese', store: 'Walmart' },
           { name: 'Salsa', store: 'Target' },
         ],
-        description: 'Scramble eggs, melt cheese on tortilla, add salsa',
       },
     ],
   };
