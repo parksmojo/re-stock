@@ -1,0 +1,11 @@
+<ion-list>
+  @for (recipe of recipes; track $index) {
+  <ion-item (click)="editRecipe(recipe)">
+    <h2>{{ recipe.name }}</h2>
+  </ion-item>
+  } @empty {
+  <ion-item>
+    <h2>No recipes found</h2>
+  </ion-item>
+  }
+</ion-list>

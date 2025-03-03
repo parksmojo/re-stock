@@ -1,5 +1,11 @@
-@for (item of items; track $index) {
-<div class="item">
-  <h2>{{ item.name }}</h2>
-</div>
-}
+<ion-list>
+  @for (item of items; track $index) {
+  <ion-item>
+    <h2>{{ item.name }}</h2>
+  </ion-item>
+  } @empty {
+  <ion-item>
+    <h2>No items found</h2>
+  </ion-item>
+  }
+</ion-list>

@@ -6,23 +6,28 @@ import {
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../components/header/header.component';
 import { RecipeEditComponent } from 'src/app/components/recipe-edit/recipe-edit.component';
-import { Item } from 'src/app/model/item/item';
 import { Recipe } from 'src/app/model/recipe/recipe';
+import { DbService } from 'src/app/services/db/db.service';
+import { RecipeListComponent } from '../../components/recipe-list/recipe-list.component';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
   standalone: true,
-  imports: [IonContent, HeaderComponent, IonButton],
+  imports: [IonContent, HeaderComponent, IonButton, RecipeListComponent],
 })
 export class RecipesPage implements OnInit {
+  recipes: Recipe[] = [];
+
   testRecipe = new Recipe({
     name: 'Test Recipe',
     description: 'Test Description',
   });
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(db: DbService, private modalCtrl: ModalController) {
+    this.recipes = db.pantry.recipes;
+  }
 
   ngOnInit() {
     console.log('RecipesPage initialized');

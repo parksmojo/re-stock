@@ -30,6 +30,18 @@ export class Pantry {
     this._recipes = [];
   }
 
+  get items(): Item[] {
+    return this._items;
+  }
+
+  get grocery(): Item[] {
+    return this._grocery;
+  }
+
+  get recipes(): Recipe[] {
+    return this._recipes;
+  }
+
   static fromData(data: PantryData): Pantry {
     const pantry = new Pantry('', data.code);
     pantry._users = data.users;
