@@ -63,6 +63,7 @@ export class FakeData {
           { name: 'Tomato Sauce', store: 'Kroger' },
           { name: 'Cheese', store: 'Walmart' },
         ],
+        description: 'Cook pasta, cook chicken, mix together with sauce',
       },
       {
         name: 'Quesadillas',
@@ -72,6 +73,7 @@ export class FakeData {
           { name: 'Tortillas', store: 'Walmart' },
           { name: 'Salsa', store: 'Target' },
         ],
+        description: 'Cook chicken, melt cheese on tortilla, add salsa',
       },
       {
         name: 'Grilled Cheese',
@@ -80,6 +82,7 @@ export class FakeData {
           { name: 'Cheese', store: 'Walmart' },
           { name: 'Butter', store: 'Kroger' },
         ],
+        description: 'Butter bread, melt cheese between slices',
       },
       {
         name: 'Breakfast Burrito',
@@ -89,6 +92,7 @@ export class FakeData {
           { name: 'Cheese', store: 'Walmart' },
           { name: 'Salsa', store: 'Target' },
         ],
+        description: 'Scramble eggs, melt cheese on tortilla, add salsa',
       },
     ],
   };
