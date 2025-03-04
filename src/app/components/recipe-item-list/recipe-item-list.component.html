@@ -1,0 +1,17 @@
+<ion-list>
+  @for (item of items(); track $index) {
+  <ion-item>
+    <ion-label class="ion-text-nowrap">
+      @if (item.quantity && item.quantity > 1) {
+      <ion-note>{{ item.quantity }}</ion-note>
+      }
+      {{ item.name }}
+      <ion-note>{{ item.store }}</ion-note>
+    </ion-label>
+  </ion-item>
+  } @empty {
+  <ion-item>
+    <ion-label>No items found</ion-label>
+  </ion-item>
+  }
+</ion-list>

@@ -14,11 +14,13 @@ import {
   IonHeader,
   IonInput,
   IonItem,
+  IonText,
   IonTitle,
   IonToolbar,
   ModalController,
 } from '@ionic/angular/standalone';
 import { RecipeData } from 'src/app/model/recipe/recipe';
+import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.component';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -35,6 +37,8 @@ import { RecipeData } from 'src/app/model/recipe/recipe';
     IonItem,
     IonInput,
     FormsModule,
+    RecipeItemListComponent,
+    IonText,
   ],
 })
 export class RecipeEditComponent implements OnInit {

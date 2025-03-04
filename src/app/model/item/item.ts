@@ -34,6 +34,14 @@ export class Item {
     return this._name;
   }
 
+  get quantity(): number {
+    return this._quantity;
+  }
+
+  get store(): string {
+    return this._store;
+  }
+
   get data(): ItemData {
     return {
       name: this._name,
