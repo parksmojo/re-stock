@@ -6,17 +6,21 @@ import { Pantry } from 'src/app/model/pantry/pantry';
   providedIn: 'root',
 })
 export class DbService {
-  private _pantry: Pantry;
+  private _pantry!: Pantry;
 
   constructor() {
-    this._pantry = Pantry.fromData(FakeData.pantry);
-  }
-
-  public updatePantry() {
-    this._pantry = Pantry.fromData(FakeData.pantry);
+    this.pullPantry();
   }
 
   get pantry() {
     return this._pantry;
+  }
+
+  public pullPantry() {
+    this._pantry = Pantry.fromData(FakeData.pantry);
+  }
+
+  public pushPantry() {
+    FakeData.pantry = this._pantry.data;
   }
 }
