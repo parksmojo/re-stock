@@ -1,22 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  AlertController,
   IonButton,
   IonButtons,
   IonContent,
   IonHeader,
+  IonInput,
   IonItem,
   IonTitle,
   IonToolbar,
   ModalController,
 } from '@ionic/angular/standalone';
-import { Recipe } from 'src/app/model/recipe/recipe';
+import { RecipeData } from 'src/app/model/recipe/recipe';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.scss'],
   imports: [
+    ReactiveFormsModule,
     IonHeader,
     IonButtons,
     IonButton,
@@ -24,24 +33,41 @@ import { Recipe } from 'src/app/model/recipe/recipe';
     IonToolbar,
     IonContent,
     IonItem,
+    IonInput,
     FormsModule,
   ],
 })
 export class RecipeEditComponent implements OnInit {
-  @Input()
-  recipe: Recipe | null = null;
+  @Input() recipe: RecipeData = { name: 'TEST' };
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController
+  ) {}
 
-  ngOnInit() {
-    console.log('RecipeEditComponent initialized');
-  }
+  ngOnInit() {}
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  confirm() {
-    this.modalCtrl.dismiss(null, 'confirm');
+  save() {
+    this.modalCtrl.dismiss(this.recipe, 'save');
+  }
+
+  async confirmDelete() {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Recipe',
+      message: `Are you sure you want to delete ${this.recipe?.name}?`,
+      buttons: [
+        { text: 'Cancel', role: 'cancel' },
+        {
+          text: 'Delete',
+          role: 'confirm',
+          handler: () => this.modalCtrl.dismiss(null, 'delete'),
+        },
+      ],
+    });
+    alert.present();
   }
 }

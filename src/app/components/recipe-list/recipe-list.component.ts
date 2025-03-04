@@ -18,23 +18,11 @@ import { pencil, trash } from 'ionicons/icons';
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.scss'],
-  imports: [
-    IonList,
-    IonItem,
-    IonLabel,
-    IonText,
-    IonNote,
-    IonItemSliding,
-    IonItemOptions,
-    IonItemOption,
-    IonIcon,
-  ],
+  imports: [IonList, IonItem, IonLabel, IonText, IonNote],
 })
 export class RecipeListComponent implements OnInit {
   @Input() recipes: Recipe[] = [];
   @Output() recipeEdit = new EventEmitter<Recipe>();
-  @Output() recipeDelete = new EventEmitter<Recipe>();
-  @Output() recipeView = new EventEmitter<Recipe>();
 
   constructor() {
     addIcons({ pencil, trash });
@@ -44,9 +32,5 @@ export class RecipeListComponent implements OnInit {
 
   editRecipe(recipe: Recipe) {
     this.recipeEdit.emit(recipe);
-  }
-
-  deleteRecipe(recipe: Recipe) {
-    this.recipeDelete.emit(recipe);
   }
 }

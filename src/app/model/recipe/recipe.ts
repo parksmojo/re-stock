@@ -17,6 +17,12 @@ export class Recipe {
     this._ingredients = data.ingredients?.map((data) => new Item(data)) ?? [];
   }
 
+  update(data: RecipeData): void {
+    this._name = data.name;
+    this._note = data.note ?? '';
+    this._ingredients = data.ingredients?.map((data) => new Item(data)) ?? [];
+  }
+
   get name(): string {
     return this._name;
   }

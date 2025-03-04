@@ -1,22 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
-    <ion-title>Welcome</ion-title>
+    <ion-title>Edit {{ recipe.name }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+      <ion-button color="danger" (click)="confirmDelete()">Delete</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
   <ion-item>
-    {{ recipe?.name }}
+    <ion-input
+      type="text"
+      label="Name"
+      labelPlacement="floating"
+      [(ngModel)]="recipe.name"
+    />
   </ion-item>
   <ion-item>
-    {{ recipe?.note }}
+    <ion-input
+      type="text"
+      label="Note"
+      labelPlacement="floating"
+      [(ngModel)]="recipe.note"
+    />
   </ion-item>
-  <ion-item>
-    {{ recipe?.ingredientString }}
-  </ion-item>
+  <div id="actions">
+    <ion-button color="medium" (click)="cancel()"> Cancel </ion-button>
+    <ion-button color="success" (click)="save()"> Save </ion-button>
+  </div>
 </ion-content>

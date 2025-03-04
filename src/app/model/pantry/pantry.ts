@@ -42,6 +42,9 @@ export class Pantry {
     return this._recipes;
   }
 
+  public addRecipe(recipe: Recipe) {
+    this._recipes.push(recipe);
+  }
   public deleteRecipe(recipe: Recipe) {
     this._recipes = this._recipes.filter((r) => r !== recipe);
   }

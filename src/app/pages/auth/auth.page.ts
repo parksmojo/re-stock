@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -34,7 +32,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     IonItem,
     IonInput,
     IonContent,
-    CommonModule,
     ReactiveFormsModule,
     IonCard,
     IonCardHeader,
