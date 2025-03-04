@@ -1,4 +1,4 @@
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   IonIcon,
   IonItem,
@@ -9,10 +9,8 @@ import {
   IonList,
   IonNote,
   IonText,
-  ModalController,
 } from '@ionic/angular/standalone';
 import { Recipe } from 'src/app/model/recipe/recipe';
-import { RecipeEditComponent } from '../recipe-edit/recipe-edit.component';
 import { addIcons } from 'ionicons';
 import { pencil, trash } from 'ionicons/icons';
 
@@ -34,27 +32,21 @@ import { pencil, trash } from 'ionicons/icons';
 })
 export class RecipeListComponent implements OnInit {
   @Input() recipes: Recipe[] = [];
+  @Output() recipeEdit = new EventEmitter<Recipe>();
+  @Output() recipeDelete = new EventEmitter<Recipe>();
+  @Output() recipeView = new EventEmitter<Recipe>();
 
-  constructor(private modalCtrl: ModalController) {
+  constructor() {
     addIcons({ pencil, trash });
   }
 
   ngOnInit() {}
 
-  async editRecipe(recipe: Recipe) {
-    const modal = await this.modalCtrl.create({
-      component: RecipeEditComponent,
-      componentProps: { recipe },
-    });
-    modal.present();
-
-    const { data, role } = await modal.onWillDismiss();
-    if (role === 'confirm') {
-      console.log('Recipe saved');
-    }
+  editRecipe(recipe: Recipe) {
+    this.recipeEdit.emit(recipe);
   }
 
   deleteRecipe(recipe: Recipe) {
-    console.log('uh oh');
+    this.recipeDelete.emit(recipe);
   }
 }

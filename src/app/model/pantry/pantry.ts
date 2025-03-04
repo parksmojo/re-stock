@@ -42,6 +42,10 @@ export class Pantry {
     return this._recipes;
   }
 
+  public deleteRecipe(recipe: Recipe) {
+    this._recipes = this._recipes.filter((r) => r !== recipe);
+  }
+
   static fromData(data: PantryData): Pantry {
     const pantry = new Pantry('', data.code);
     pantry._users = data.users;

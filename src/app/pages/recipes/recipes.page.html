@@ -1,5 +1,14 @@
 <app-header [title]="'Recipes'" />
 
 <ion-content [fullscreen]="true">
-  <app-recipe-list [recipes]="recipes" />
+  <app-recipe-list
+    [recipes]="recipes"
+    (recipeEdit)="editRecipe($event)"
+    (recipeDelete)="deleteConfirmation($event)"
+  />
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="newRecipe()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
