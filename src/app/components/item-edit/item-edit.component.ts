@@ -35,13 +35,16 @@ import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.co
 })
 export class ItemEditComponent implements OnInit {
   @Input() item: ItemData = { name: 'TEST' };
+  itemTitle: string = 'item';
 
   constructor(
     private modalCtrl: ModalController,
     private alertCtrl: AlertController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.itemTitle = this.item.name;
+  }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');

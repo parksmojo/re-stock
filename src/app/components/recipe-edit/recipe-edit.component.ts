@@ -98,9 +98,10 @@ export class RecipeEditComponent implements OnInit {
   }
 
   async editItemData(item: ItemData) {
+    const tempItem = { ...item };
     const modal = await this.modalCtrl.create({
       component: ItemEditComponent,
-      componentProps: { item },
+      componentProps: { item: tempItem },
       id: 'item-edit-modal',
     });
     modal.present();
