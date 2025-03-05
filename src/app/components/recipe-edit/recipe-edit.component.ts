@@ -16,6 +16,7 @@ import {
   IonInput,
   IonItem,
   IonText,
+  IonTextarea,
   IonTitle,
   IonToolbar,
   ModalController,
@@ -43,6 +44,7 @@ import { ItemData } from 'src/app/model/item/item';
     RecipeItemListComponent,
     IonText,
     IonBackdrop,
+    IonTextarea,
   ],
 })
 export class RecipeEditComponent implements OnInit {

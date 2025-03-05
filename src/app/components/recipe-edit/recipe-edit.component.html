@@ -17,10 +17,11 @@
     />
   </ion-item>
   <ion-item>
-    <ion-input
+    <ion-textarea
       type="text"
       label="Note"
       labelPlacement="floating"
+      [autoGrow]="true"
       [(ngModel)]="recipe.note"
     />
   </ion-item>
