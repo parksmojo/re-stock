@@ -31,7 +31,7 @@ export class Recipe {
     return this._note;
   }
 
-  get ingredients(): ItemData[] {
+  get ingredients(): Item[] {
     return this._ingredients;
   }
 

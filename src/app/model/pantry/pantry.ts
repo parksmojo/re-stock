@@ -57,6 +57,21 @@ export class Pantry {
     this._recipes = this._recipes.filter((r) => r !== recipe);
   }
 
+  public addRecipeToGrocery(recipe: Recipe) {
+    recipe.ingredients.forEach((ingredient) => {
+      const item = this._grocery.find((i) => i.equals(ingredient));
+      if (item) {
+        item.quantity += ingredient.quantity;
+      } else {
+        this._grocery.push(new Item(ingredient));
+      }
+    });
+  }
+
+  static generateCode(): string {
+    return Math.random().toString(36).substring(2, 6).toUpperCase();
+  }
+
   static fromData(data: PantryData): Pantry {
     const pantry = new Pantry('', data.code);
     pantry._users = data.users;
@@ -66,10 +81,6 @@ export class Pantry {
     pantry._items = data.items.map((item) => new Item(item));
     pantry._recipes = data.recipes.map((recipe) => new Recipe(recipe));
     return pantry;
-  }
-
-  static generateCode(): string {
-    return Math.random().toString(36).substring(2, 6).toUpperCase();
   }
 
   get data(): PantryData {

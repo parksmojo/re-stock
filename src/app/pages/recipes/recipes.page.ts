@@ -38,7 +38,11 @@ export class RecipesPage implements OnInit {
     note: 'Test Description',
   });
 
-  constructor(private db: DbService, private modalCtrl: ModalController) {
+  constructor(
+    private db: DbService,
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController
+  ) {
     addIcons({ add });
     this.refreshList();
   }
@@ -49,6 +53,10 @@ export class RecipesPage implements OnInit {
 
   ngOnInit() {
     console.log('RecipesPage initialized');
+  }
+
+  addRecipeToList(recipe: Recipe) {
+    this.db.pantry.addRecipeToGrocery(recipe);
   }
 
   async newRecipe() {
@@ -76,5 +84,24 @@ export class RecipesPage implements OnInit {
     });
     modal.present();
     return await modal.onWillDismiss();
+  }
+
+  async confirmDeleteRecipe(recipe: Recipe) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Recipe',
+      message: `Are you sure you want to delete ${recipe.name}?`,
+      buttons: [
+        { text: 'Cancel', role: 'cancel' },
+        {
+          text: 'Delete',
+          role: 'confirm',
+          handler: () => {
+            this.db.pantry.deleteRecipe(recipe);
+            this.refreshList();
+          },
+        },
+      ],
+    });
+    alert.present();
   }
 }

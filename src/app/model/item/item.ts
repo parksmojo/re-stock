@@ -49,6 +49,10 @@ export class Item {
     return this._quantity;
   }
 
+  set quantity(value: number) {
+    this._quantity = value;
+  }
+
   get store(): string {
     return this._store;
   }
