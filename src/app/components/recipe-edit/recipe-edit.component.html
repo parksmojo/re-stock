@@ -2,7 +2,9 @@
   <ion-toolbar>
     <ion-title>Edit {{ recipe.name }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="danger" (click)="confirmDelete()">Delete</ion-button>
+      <ion-button color="danger" (click)="confirmDeleteRecipe()"
+        >Delete</ion-button
+      >
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -26,6 +28,7 @@
       <app-recipe-item-list
         [(items)]="recipe.ingredients"
         (itemEdit)="editItem($event)"
+        (itemDelete)="confirmDeleteItem($event)"
       />
       <ion-button
         expand="block"

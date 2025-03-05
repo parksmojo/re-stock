@@ -73,7 +73,7 @@ export class RecipeEditComponent implements OnInit {
     this.modalCtrl.dismiss(this.recipe, 'save');
   }
 
-  async confirmDelete() {
+  async confirmDeleteRecipe() {
     const alert = await this.alertCtrl.create({
       header: 'Delete Recipe',
       message: `Are you sure you want to delete ${this.recipe?.name}?`,
@@ -122,5 +122,28 @@ export class RecipeEditComponent implements OnInit {
     const result = await modal.onWillDismiss();
     this.showBackdrop = false;
     return result;
+  }
+
+  async confirmDeleteItem(item: ItemData) {
+    console.log('confirmDeleteItem', item);
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Recipe',
+      message: `Are you sure you want to delete ${item.name}?`,
+      buttons: [
+        { text: 'Cancel', role: 'cancel' },
+        {
+          text: 'Delete',
+          role: 'confirm',
+          handler: () => this.removeItem(item),
+        },
+      ],
+    });
+    alert.present();
+  }
+
+  removeItem(item: ItemData) {
+    this.recipe.ingredients = this.recipe.ingredients?.filter(
+      (i) => i !== item
+    );
   }
 }
