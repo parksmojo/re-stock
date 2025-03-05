@@ -42,6 +42,14 @@ export class Pantry {
     return this._recipes;
   }
 
+  get categories(): string[] {
+    return this._categories;
+  }
+
+  get stores(): string[] {
+    return this._stores;
+  }
+
   public addRecipe(recipe: Recipe) {
     this._recipes.push(recipe);
   }

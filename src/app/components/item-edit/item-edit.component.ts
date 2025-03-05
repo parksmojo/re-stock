@@ -2,20 +2,20 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   AlertController,
-  IonBackdrop,
   IonButton,
   IonButtons,
-  IonContent,
   IonHeader,
   IonInput,
   IonItem,
-  IonText,
+  IonList,
+  IonSelect,
+  IonSelectOption,
   IonTitle,
   IonToolbar,
   ModalController,
 } from '@ionic/angular/standalone';
-import { Item, ItemData } from 'src/app/model/item/item';
-import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.component';
+import { ItemData } from 'src/app/model/item/item';
+import { DbService } from 'src/app/services/db/db.service';
 
 @Component({
   selector: 'app-item-edit',
@@ -31,16 +31,25 @@ import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.co
     IonItem,
     IonInput,
     FormsModule,
+    IonSelect,
+    IonSelectOption,
+    IonList,
   ],
 })
 export class ItemEditComponent implements OnInit {
   @Input() item: ItemData = { name: 'TEST' };
   itemTitle: string = 'item';
+  categories: string[] = [];
+  stores: string[] = [];
 
   constructor(
+    db: DbService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController
-  ) {}
+  ) {
+    this.categories = db.pantry.categories;
+    this.stores = db.pantry.stores;
+  }
 
   ngOnInit() {
     this.itemTitle = this.item.name;
