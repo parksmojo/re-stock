@@ -92,7 +92,10 @@ export class RecipeEditComponent implements OnInit {
   async addItem() {
     const { data, role } = await this.editItemData({ name: 'New Item' });
     if (data) {
-      this.recipe.ingredients?.push(data);
+      if (!this.recipe.ingredients) {
+        this.recipe.ingredients = [];
+      }
+      this.recipe.ingredients.push(data);
     }
   }
 
