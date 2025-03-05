@@ -30,6 +30,17 @@ export class Item {
     this._price = data.price ?? null;
   }
 
+  public update(data: ItemData) {
+    this._name = data.name;
+    this._quantity = data.quantity ?? 1;
+    this._category = data.category ?? 'Other';
+    this._store = data.store ?? 'Any';
+    this._checked = data.checked ?? false;
+    this._purpose = data.purpose ?? null;
+    this._expiration = data.expiration ?? null;
+    this._price = data.price ?? null;
+  }
+
   get name(): string {
     return this._name;
   }

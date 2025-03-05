@@ -1,3 +1,20 @@
-<p>
-  item-edit works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit {{ item.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="confirmDelete()">Delete</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-item>
+  <ion-input
+    type="text"
+    label="Name"
+    labelPlacement="floating"
+    [(ngModel)]="item.name"
+  />
+</ion-item>
+<div id="actions">
+  <ion-button color="medium" (click)="cancel()"> Cancel </ion-button>
+  <ion-button color="success" (click)="save()"> Save </ion-button>
+</div>

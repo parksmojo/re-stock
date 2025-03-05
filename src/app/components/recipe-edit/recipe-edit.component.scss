@@ -3,3 +3,11 @@
   flex-direction: row;
   justify-content: center;
 }
+
+ion-backdrop {
+  width: 101%;
+  height: 101%;
+  opacity: 0.7;
+  background: black;
+  z-index: 1000;
+}

@@ -25,9 +25,15 @@
     />
   </ion-item>
   <ion-text><h4>Ingredients</h4></ion-text>
-  <app-recipe-item-list [(items)]="recipe.ingredients" />
+  <app-recipe-item-list
+    [(items)]="recipe.ingredients"
+    (itemEdit)="editItem($event)"
+  />
   <div id="actions">
     <ion-button color="medium" (click)="cancel()"> Cancel </ion-button>
     <ion-button color="success" (click)="save()"> Save </ion-button>
   </div>
 </ion-content>
+@if (showBackdrop) {
+<ion-backdrop [visible]="true" />
+}

@@ -1,30 +1,69 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular/standalone';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {
+  AlertController,
+  IonBackdrop,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonInput,
+  IonItem,
+  IonText,
+  IonTitle,
+  IonToolbar,
+  ModalController,
+} from '@ionic/angular/standalone';
 import { Item, ItemData } from 'src/app/model/item/item';
+import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.component';
 
 @Component({
   selector: 'app-item-edit',
   templateUrl: './item-edit.component.html',
   styleUrls: ['./item-edit.component.scss'],
+  imports: [
+    ReactiveFormsModule,
+    IonHeader,
+    IonButtons,
+    IonButton,
+    IonTitle,
+    IonToolbar,
+    IonItem,
+    IonInput,
+    FormsModule,
+  ],
 })
 export class ItemEditComponent implements OnInit {
-  @Input()
-  item: Item | null = null;
-  itemData: ItemData | null = null;
+  @Input() item: ItemData = { name: 'TEST' };
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController
+  ) {}
 
-  ngOnInit() {
-    if (this.item) {
-      this.itemData = this.item.data;
-    }
-  }
+  ngOnInit() {}
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  confirm() {
-    this.modalCtrl.dismiss(null, 'confirm');
+  save() {
+    this.modalCtrl.dismiss(this.item, 'save');
+  }
+
+  async confirmDelete() {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Recipe',
+      message: `Are you sure you want to delete ${this.item.name}?`,
+      buttons: [
+        { text: 'Cancel', role: 'cancel' },
+        {
+          text: 'Delete',
+          role: 'confirm',
+          handler: () => this.modalCtrl.dismiss(null, 'delete'),
+        },
+      ],
+    });
+    alert.present();
   }
 }

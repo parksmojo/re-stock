@@ -15,7 +15,6 @@ import { DbService } from 'src/app/services/db/db.service';
 import { RecipeListComponent } from '../../components/recipe-list/recipe-list.component';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
-import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-recipes',

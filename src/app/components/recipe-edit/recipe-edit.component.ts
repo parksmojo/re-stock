@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import {
   AlertController,
+  IonBackdrop,
   IonButton,
   IonButtons,
   IonContent,
@@ -21,6 +22,8 @@ import {
 } from '@ionic/angular/standalone';
 import { RecipeData } from 'src/app/model/recipe/recipe';
 import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.component';
+import { ItemEditComponent } from '../item-edit/item-edit.component';
+import { ItemData } from 'src/app/model/item/item';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -39,10 +42,12 @@ import { RecipeItemListComponent } from '../recipe-item-list/recipe-item-list.co
     FormsModule,
     RecipeItemListComponent,
     IonText,
+    IonBackdrop,
   ],
 })
 export class RecipeEditComponent implements OnInit {
   @Input() recipe: RecipeData = { name: 'TEST' };
+  showBackdrop: boolean = false;
 
   constructor(
     private modalCtrl: ModalController,
@@ -73,5 +78,36 @@ export class RecipeEditComponent implements OnInit {
       ],
     });
     alert.present();
+  }
+
+  async addItem() {
+    const { data, role } = await this.editItemData({ name: 'New Item' });
+    if (data) {
+      this.recipe.ingredients?.push(data);
+    }
+  }
+
+  async editItem(item: ItemData) {
+    const { data, role } = await this.editItemData(item);
+    const i = this.recipe.ingredients?.findIndex((i) => i === item) ?? -1;
+    if (data && i !== -1) {
+      this.recipe.ingredients?.splice(i, 1, data);
+    } else if (role === 'delete' && i !== -1) {
+      this.recipe.ingredients?.splice(i, 1);
+    }
+  }
+
+  async editItemData(item: ItemData) {
+    const modal = await this.modalCtrl.create({
+      component: ItemEditComponent,
+      componentProps: { item },
+      id: 'item-edit-modal',
+    });
+    modal.present();
+    this.showBackdrop = true;
+
+    const result = await modal.onWillDismiss();
+    this.showBackdrop = false;
+    return result;
   }
 }
