@@ -1,4 +1,15 @@
 <app-header [title]="'Grocery List'" />
 <ion-content [fullscreen]="true">
-  <app-item-list [items]="items" />
+  <ion-item lines="full">
+    <ion-select label="Store" interface="popover" [(ngModel)]="selectedStore">
+      @for (store of db.pantry.stores; track store) {
+      <ion-select-option value="{{ store }}">{{ store }}</ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+  <app-item-list
+    [items]="items"
+    (itemEdit)="editItem($event)"
+    (itemDelete)="confirmDeleteItem($event)"
+  />
 </ion-content>

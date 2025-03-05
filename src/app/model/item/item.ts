@@ -57,6 +57,20 @@ export class Item {
     return this._store;
   }
 
+  get purpose(): string | null {
+    return this._purpose;
+  }
+  set purpose(value: string | null) {
+    this._purpose = value;
+  }
+
+  get checked(): boolean {
+    return this._checked;
+  }
+  set checked(value: boolean) {
+    this._checked = value;
+  }
+
   get data(): ItemData {
     return {
       name: this._name,

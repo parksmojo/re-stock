@@ -4,7 +4,7 @@ export class FakeData {
   static pantry: PantryData = {
     code: 'XHTJ',
     users: ['test@test.com', 'bro@test.com'],
-    stores: ['Walmart', 'Target', 'Kroger'],
+    stores: ['Walmart', 'Target', 'Kroger', 'All'],
     categories: ['Produce', 'Dairy', 'Meat', 'Bakery'],
     items: [
       { name: 'Apples', quantity: 5, category: 'Produce', store: 'Walmart' },
