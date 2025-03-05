@@ -1,6 +1,6 @@
 <ion-list>
   @for (item of items(); track $index) {
-  <ion-item (click)="editItem(item)">
+  <ion-item lines="full" detail="true" (click)="editItem(item)">
     <ion-label class="ion-text-nowrap">
       @if (item.quantity && item.quantity > 1) {
       <ion-note>{{ item.quantity }}</ion-note>

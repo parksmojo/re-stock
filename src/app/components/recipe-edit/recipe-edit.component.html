@@ -7,29 +7,36 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <ion-text><h4>Information</h4></ion-text>
   <ion-item>
-    <ion-input
-      type="text"
-      label="Name"
-      labelPlacement="floating"
-      [(ngModel)]="recipe.name"
-    />
+    <ion-input type="text" label="Name" [(ngModel)]="recipe.name" />
   </ion-item>
   <ion-item>
     <ion-textarea
       type="text"
       label="Note"
-      labelPlacement="floating"
       [autoGrow]="true"
       [(ngModel)]="recipe.note"
     />
   </ion-item>
-  <ion-text><h4>Ingredients</h4></ion-text>
-  <app-recipe-item-list
-    [(items)]="recipe.ingredients"
-    (itemEdit)="editItem($event)"
-  />
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ingredients</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <app-recipe-item-list
+        [(items)]="recipe.ingredients"
+        (itemEdit)="editItem($event)"
+      />
+      <ion-button
+        expand="block"
+        size="small"
+        color="primary"
+        (click)="addItem()"
+      >
+        Add Ingredient
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
   <div id="actions">
     <ion-button color="medium" (click)="cancel()"> Cancel </ion-button>
     <ion-button color="success" (click)="save()"> Save </ion-button>
