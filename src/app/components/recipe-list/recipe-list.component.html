@@ -9,7 +9,7 @@
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-item-option>
     </ion-item-options>
-    <ion-item detail="true" (click)="editRecipe(recipe)">
+    <ion-item button detail="true" (click)="editRecipe(recipe)">
       <ion-label class="ion-text-nowrap">
         <ion-text>{{ recipe.name }}</ion-text>
         @if (recipe.note) {
