@@ -10,6 +10,7 @@ import {
   IonList,
   IonSelect,
   IonSelectOption,
+  IonTextarea,
   IonTitle,
   IonToolbar,
   ModalController,
@@ -34,6 +35,7 @@ import { DbService } from 'src/app/services/db/db.service';
     IonSelect,
     IonSelectOption,
     IonList,
+    IonTextarea,
   ],
 })
 export class ItemEditComponent implements OnInit {
@@ -41,6 +43,13 @@ export class ItemEditComponent implements OnInit {
   itemTitle: string = 'item';
   categories: string[] = [];
   stores: string[] = [];
+
+  @Input() showQuantity: boolean = false;
+  @Input() showCategory: boolean = false;
+  @Input() showStore: boolean = false;
+  @Input() showPurpose: boolean = false;
+  @Input() showBought: boolean = false;
+  @Input() showExpiration: boolean = false;
 
   constructor(
     db: DbService,

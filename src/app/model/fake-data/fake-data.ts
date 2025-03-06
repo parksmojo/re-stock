@@ -5,7 +5,7 @@ export class FakeData {
     code: 'XHTJ',
     users: ['test@test.com', 'bro@test.com'],
     stores: ['Walmart', 'Target', 'Kroger', 'Any'],
-    categories: ['Produce', 'Dairy', 'Meat', 'Bakery'],
+    categories: ['Produce', 'Dairy', 'Meat', 'Bakery', 'Other'],
     items: [
       { name: 'Apples', quantity: 5, category: 'Produce', store: 'Walmart' },
       {
@@ -52,7 +52,12 @@ export class FakeData {
       },
       { name: 'Cheese', quantity: 1, category: 'Dairy', store: 'Walmart' },
       { name: 'Lettuce', quantity: 1, category: 'Produce', store: 'Target' },
-      { name: 'Onion', quantity: 1, category: 'Produce', store: 'Kroger' },
+      {
+        name: 'Onion',
+        quantity: 2,
+        category: 'Produce',
+        store: 'Kroger',
+      },
     ],
     recipes: [
       {

@@ -10,6 +10,7 @@
   <ion-item>
     <ion-input type="text" label="Name" [(ngModel)]="item.name" />
   </ion-item>
+  @if (showQuantity) {
   <ion-item>
     <ion-input
       type="number"
@@ -18,6 +19,7 @@
       [(ngModel)]="item.quantity"
     />
   </ion-item>
+  } @if (showCategory) {
   <ion-item>
     <ion-select label="Category" [(ngModel)]="item.category">
       @for (category of categories; track $index) {
@@ -25,6 +27,7 @@
       }
     </ion-select>
   </ion-item>
+  } @if (showStore) {
   <ion-item>
     <ion-select label="Store" [(ngModel)]="item.store">
       @for (store of stores; track $index) {
@@ -32,6 +35,35 @@
       }
     </ion-select>
   </ion-item>
+  } @if (showPurpose) {
+  <ion-item>
+    <ion-textarea
+      type="text"
+      label="Purpose"
+      placeholder="None"
+      [autoGrow]="true"
+      [(ngModel)]="item.purpose"
+    ></ion-textarea>
+  </ion-item>
+  } @if (showBought) {
+  <ion-item>
+    <ion-input
+      type="text"
+      label="Bought"
+      [readonly]="true"
+      [value]="item.bought?.toDateString()"
+    />
+  </ion-item>
+  } @if (showExpiration) {
+  <ion-item>
+    <ion-input
+      type="text"
+      label="Expiration"
+      [readonly]="true"
+      [value]="item.expiration?.toDateString()"
+    />
+  </ion-item>
+  }
 </ion-list>
 <div id="actions">
   <ion-button color="medium" (click)="cancel()"> Cancel </ion-button>

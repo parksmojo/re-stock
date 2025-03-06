@@ -40,6 +40,7 @@ export class Item {
     this._store = data.store ?? 'Any';
     this._checked = data.checked ?? false;
     this._purpose = data.purpose ?? null;
+    this._bought = data.bought ?? null;
     this._expiration = data.expiration ?? null;
     this._price = data.price ?? null;
   }
@@ -74,8 +75,11 @@ export class Item {
     this._checked = value;
   }
 
-  get bought(): Date | null {
-    return this._bought;
+  get boughtTime(): number | null {
+    return this._bought?.getTime() ?? null;
+  }
+  get boughtDate(): string | null {
+    return this._bought?.toDateString() ?? null;
   }
   public boughtToday() {
     this._bought = new Date();
@@ -89,6 +93,7 @@ export class Item {
       store: this._store,
       checked: this._checked,
       purpose: this._purpose ?? undefined,
+      bought: this._bought ?? undefined,
       expiration: this._expiration ?? undefined,
       price: this._price ?? undefined,
     };

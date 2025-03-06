@@ -82,7 +82,13 @@ export class GroceryListPage implements OnInit {
   async editItemData(item: ItemData) {
     const modal = await this.modalCtrl.create({
       component: ItemEditComponent,
-      componentProps: { item },
+      componentProps: {
+        item,
+        showQuantity: true,
+        showCategory: true,
+        showStore: true,
+        showPurpose: true,
+      },
       id: 'item-edit-modal',
     });
     modal.present();
