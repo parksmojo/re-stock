@@ -57,6 +57,9 @@ export class Pantry {
     this._recipes = this._recipes.filter((r) => r !== recipe);
   }
 
+  public addGroceryItem(item: Item) {
+    this._grocery.push(item);
+  }
   public deleteGroceryItem(item: Item) {
     this._grocery = this._grocery.filter((i) => i !== item);
   }
@@ -73,6 +76,18 @@ export class Pantry {
         ingredient.purpose = recipe.name;
         this._grocery.push(ingredient);
       }
+    });
+  }
+
+  public processBoughtItems(store: string) {
+    const boughtItems =
+      store === 'Any'
+        ? this.grocery.filter((item) => item.checked)
+        : this._grocery.filter((item) => item.store === store && item.checked);
+    boughtItems.forEach((item) => {
+      this._grocery = this._grocery.filter((i) => i !== item);
+      this._items.push(item);
+      item.boughtToday();
     });
   }
 

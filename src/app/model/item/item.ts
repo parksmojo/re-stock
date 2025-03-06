@@ -5,6 +5,7 @@ export interface ItemData {
   store?: string;
   checked?: boolean;
   purpose?: string;
+  bought?: Date;
   expiration?: Date;
   price?: number;
 }
@@ -16,6 +17,7 @@ export class Item {
   private _store: string;
   private _checked: boolean;
   private _purpose: string | null;
+  private _bought: Date | null;
   private _expiration: Date | null;
   private _price: number | null;
 
@@ -26,6 +28,7 @@ export class Item {
     this._store = data.store ?? 'Any';
     this._checked = data.checked ?? false;
     this._purpose = data.purpose ?? null;
+    this._bought = data.bought ?? null;
     this._expiration = data.expiration ?? null;
     this._price = data.price ?? null;
   }
@@ -69,6 +72,13 @@ export class Item {
   }
   set checked(value: boolean) {
     this._checked = value;
+  }
+
+  get bought(): Date | null {
+    return this._bought;
+  }
+  public boughtToday() {
+    this._bought = new Date();
   }
 
   get data(): ItemData {
