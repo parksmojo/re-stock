@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
+  IonBadge,
   IonCheckbox,
   IonIcon,
   IonItem,
@@ -20,6 +21,7 @@ import {
   IonText,
 } from '@ionic/angular/standalone';
 import { Item } from 'src/app/model/item/item';
+import { DbService } from 'src/app/services/db/db.service';
 
 @Component({
   selector: 'app-item-list',
@@ -37,6 +39,7 @@ import { Item } from 'src/app/model/item/item';
     IonNote,
     IonCheckbox,
     FormsModule,
+    IonBadge,
   ],
 })
 export class ItemListComponent implements OnInit {

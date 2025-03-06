@@ -1,3 +1,4 @@
+import { otherCategory } from '../category/category';
 import { PantryData } from '../pantry/pantry';
 
 export class FakeData {
@@ -5,13 +6,27 @@ export class FakeData {
     code: 'XHTJ',
     users: ['test@test.com', 'bro@test.com'],
     stores: ['Walmart', 'Target', 'Kroger', 'Any'],
-    categories: ['Produce', 'Dairy', 'Meat', 'Bakery', 'Other'],
+    categories: [
+      { ...otherCategory },
+      { name: 'Produce', color: '#4CAF50', textColor: 'black' },
+      { name: 'Dairy', color: '#FFC107', textColor: 'black' },
+      { name: 'Meat', color: '#FF5722', textColor: 'white' },
+      { name: 'Bakery', color: '#9C27B0', textColor: 'white' },
+      { name: 'Grains', color: '#607D8B', textColor: 'white' },
+      { name: 'Condiments', color: '#ffffff', textColor: 'black' },
+    ],
     items: [
-      { name: 'Apples', quantity: 5, category: 'Produce', store: 'Walmart' },
+      {
+        name: 'Apples',
+        quantity: 5,
+        category: { name: 'Produce', color: '#4CAF50', textColor: 'black' },
+        store: 'Walmart',
+      },
       {
         name: 'Milk',
         quantity: 1,
-        category: 'Dairy',
+        category: { name: 'Dairy', color: '#FFC107', textColor: 'black' },
+
         store: 'Target',
         purpose: 'Cereal',
         expiration: new Date('2023-10-01'),
@@ -19,7 +34,8 @@ export class FakeData {
       {
         name: 'Chicken',
         quantity: 2,
-        category: 'Meat',
+        category: { name: 'Meat', color: '#FF5722', textColor: 'black' },
+
         store: 'Kroger',
         purpose: 'Pesto pasta, Quesadillas',
         expiration: new Date('2023-10-05'),
@@ -27,7 +43,8 @@ export class FakeData {
       {
         name: 'Bread',
         quantity: 1,
-        category: 'Bakery',
+        category: { name: 'Bakery', color: '#9C27B0', textColor: 'black' },
+
         store: 'Walmart',
         purpose: 'Sandwiches, Grilled cheese',
         expiration: new Date('2023-10-03'),
@@ -35,27 +52,49 @@ export class FakeData {
       {
         name: 'Eggs',
         quantity: 12,
-        category: 'Dairy',
+        category: { name: 'Dairy', color: '#FFC107', textColor: 'black' },
+
         store: 'Target',
         purpose: 'Breakfast',
         expiration: new Date('2023-10-10'),
       },
     ],
     grocery: [
-      { name: 'Rice', quantity: 2, category: 'Grains', store: 'Walmart' },
-      { name: 'Pasta', quantity: 3, category: 'Grains', store: 'Target' },
+      {
+        name: 'Rice',
+        quantity: 2,
+        category: { name: 'Grains', color: '#607D8B', textColor: 'black' },
+        store: 'Walmart',
+      },
+      {
+        name: 'Pasta',
+        quantity: 3,
+        category: { name: 'Grains', color: '#607D8B', textColor: 'black' },
+        store: 'Target',
+      },
       {
         name: 'Tomato Sauce',
         quantity: 1,
-        category: 'Condiments',
+        category: { name: 'Condiments', color: '#ffffff', textColor: 'black' },
+
         store: 'Kroger',
       },
-      { name: 'Cheese', quantity: 1, category: 'Dairy', store: 'Walmart' },
-      { name: 'Lettuce', quantity: 1, category: 'Produce', store: 'Target' },
+      {
+        name: 'Cheese',
+        quantity: 1,
+        category: { name: 'Dairy', color: '#FFC107', textColor: 'black' },
+        store: 'Walmart',
+      },
+      {
+        name: 'Lettuce',
+        quantity: 1,
+        category: { name: 'Produce', color: '#4CAF50', textColor: 'black' },
+        store: 'Target',
+      },
       {
         name: 'Onion',
         quantity: 2,
-        category: 'Produce',
+        category: { name: 'Produce', color: '#4CAF50', textColor: 'black' },
         store: 'Kroger',
       },
     ],

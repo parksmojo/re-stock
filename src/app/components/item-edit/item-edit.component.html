@@ -23,7 +23,9 @@
   <ion-item>
     <ion-select label="Category" [(ngModel)]="item.category">
       @for (category of categories; track $index) {
-      <ion-select-option [value]="category">{{ category }}</ion-select-option>
+      <ion-select-option [value]="category">
+        {{ category.name }}
+      </ion-select-option>
       }
     </ion-select>
   </ion-item>

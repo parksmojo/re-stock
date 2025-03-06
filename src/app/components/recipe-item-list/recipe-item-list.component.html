@@ -10,6 +10,15 @@
       </ion-item-option>
     </ion-item-options>
     <ion-item lines="full" detail="true" (click)="editItem(item)">
+      <ion-badge
+        slot="end"
+        [style]="{
+          '--background': item.category?.color,
+          '--color': item.category?.textColor
+        }"
+      >
+        {{ item.category?.name }}
+      </ion-badge>
       <ion-label class="ion-text-nowrap">
         @if (item.quantity && item.quantity > 1) {
         <ion-note>{{ item.quantity }}</ion-note>

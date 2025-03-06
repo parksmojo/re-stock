@@ -1,3 +1,4 @@
+import { Category, otherCategory } from '../category/category';
 import { Item, ItemData } from '../item/item';
 import { Recipe, RecipeData } from '../recipe/recipe';
 
@@ -5,7 +6,7 @@ export interface PantryData {
   code: string;
   users: string[];
   stores: string[];
-  categories: string[];
+  categories: Category[];
   grocery: ItemData[];
   items: ItemData[];
   recipes: RecipeData[];
@@ -15,7 +16,7 @@ export class Pantry {
   private _code: string;
   private _users: string[];
   private _stores: string[];
-  private _categories: string[];
+  private _categories: Category[];
   private _grocery: Item[];
   private _items: Item[];
   private _recipes: Recipe[];
@@ -23,8 +24,8 @@ export class Pantry {
   constructor(creatorEmail: string, code: string) {
     this._code = code;
     this._users = [creatorEmail];
-    this._stores = [...defaultStores];
-    this._categories = [...defaultCategories];
+    this._stores = ['Any'];
+    this._categories = [{ ...otherCategory }];
     this._grocery = [];
     this._items = [];
     this._recipes = [];
@@ -42,7 +43,7 @@ export class Pantry {
     return this._recipes;
   }
 
-  get categories(): string[] {
+  get categories(): Category[] {
     return this._categories;
   }
 
@@ -118,12 +119,3 @@ export class Pantry {
     };
   }
 }
-
-const defaultStores = [
-  "Smith's",
-  'Costco',
-  "Trader Joe's",
-  'Walmart',
-  'Target',
-];
-const defaultCategories = ['Produce', 'Dairy', 'Meat', 'Bakery', 'Other'];

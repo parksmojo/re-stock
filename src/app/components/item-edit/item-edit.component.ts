@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   AlertController,
+  IonBadge,
   IonButton,
   IonButtons,
   IonHeader,
@@ -16,6 +17,7 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import { ItemData } from 'src/app/model/item/item';
+import { Category } from 'src/app/model/category/category';
 import { DbService } from 'src/app/services/db/db.service';
 
 @Component({
@@ -41,7 +43,7 @@ import { DbService } from 'src/app/services/db/db.service';
 export class ItemEditComponent implements OnInit {
   @Input() item: ItemData = { name: 'TEST' };
   itemTitle: string = 'item';
-  categories: string[] = [];
+  categories: Category[] = [];
   stores: string[] = [];
 
   @Input() showQuantity: boolean = false;

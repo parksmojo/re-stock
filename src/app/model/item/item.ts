@@ -1,7 +1,9 @@
+import { Category, otherCategory } from '../category/category';
+
 export interface ItemData {
   name: string;
   quantity?: number;
-  category?: string;
+  category?: Category;
   store?: string;
   checked?: boolean;
   purpose?: string;
@@ -13,7 +15,7 @@ export interface ItemData {
 export class Item {
   private _name: string;
   private _quantity: number;
-  private _category: string;
+  private _category: Category;
   private _store: string;
   private _checked: boolean;
   private _purpose: string | null;
@@ -24,7 +26,7 @@ export class Item {
   constructor(data: ItemData) {
     this._name = data.name;
     this._quantity = data.quantity ?? 1;
-    this._category = data.category ?? 'Other';
+    this._category = data.category ?? otherCategory;
     this._store = data.store ?? 'Any';
     this._checked = data.checked ?? false;
     this._purpose = data.purpose ?? null;
@@ -36,7 +38,7 @@ export class Item {
   public update(data: ItemData) {
     this._name = data.name;
     this._quantity = data.quantity ?? 1;
-    this._category = data.category ?? 'Other';
+    this._category = data.category ?? otherCategory;
     this._store = data.store ?? 'Any';
     this._checked = data.checked ?? false;
     this._purpose = data.purpose ?? null;
@@ -83,6 +85,10 @@ export class Item {
   }
   public boughtToday() {
     this._bought = new Date();
+  }
+
+  get category(): Category {
+    return this._category;
   }
 
   get data(): ItemData {

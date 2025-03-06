@@ -1,5 +1,6 @@
 import { Component, EventEmitter, model, OnInit, Output } from '@angular/core';
 import {
+  IonBadge,
   IonIcon,
   IonItem,
   IonItemOption,
@@ -26,6 +27,7 @@ import { ItemData } from 'src/app/model/item/item';
     IonItemOptions,
     IonItemOption,
     IonIcon,
+    IonBadge,
   ],
 })
 export class RecipeItemListComponent implements OnInit {
