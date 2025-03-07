@@ -58,12 +58,18 @@
   </ion-item>
   } @if (showExpiration) {
   <ion-item>
-    <ion-input
-      type="text"
-      label="Expiration"
-      [readonly]="true"
-      [value]="item.expiration?.toDateString()"
-    />
+    <ion-label>Expiration</ion-label>
+    <ion-datetime-button [datetime]="'datetime-' + item.name" />
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          [id]="'datetime-' + item.name"
+          presentation="date"
+          [value]="item.expiration?.toISOString()"
+          (ionChange)="item.expiration = convertToDate($event.detail.value)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
   </ion-item>
   }
 </ion-list>

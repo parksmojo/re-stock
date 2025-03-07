@@ -1,5 +1,9 @@
 <app-header [title]="'Pantry'" />
 
 <ion-content [fullscreen]="true">
-  <app-item-list [items]="items" />
+  <app-inventory-item-list
+    [items]="items"
+    (itemEdit)="editItem($event)"
+    (itemDelete)="confirmDeleteItem($event)"
+  />
 </ion-content>

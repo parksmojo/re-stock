@@ -5,10 +5,14 @@ import {
   IonBadge,
   IonButton,
   IonButtons,
+  IonDatetime,
+  IonDatetimeButton,
   IonHeader,
   IonInput,
   IonItem,
+  IonLabel,
   IonList,
+  IonModal,
   IonSelect,
   IonSelectOption,
   IonTextarea,
@@ -38,6 +42,10 @@ import { DbService } from 'src/app/services/db/db.service';
     IonSelectOption,
     IonList,
     IonTextarea,
+    IonDatetime,
+    IonDatetimeButton,
+    IonModal,
+    IonLabel,
   ],
 })
 export class ItemEditComponent implements OnInit {
@@ -88,5 +96,12 @@ export class ItemEditComponent implements OnInit {
       ],
     });
     alert.present();
+  }
+
+  convertToDate(iso: string | string[] | null | undefined): Date | undefined {
+    if (!iso) {
+      return undefined;
+    }
+    return new Date(iso as string);
   }
 }

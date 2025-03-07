@@ -1,0 +1,36 @@
+<ion-list>
+  @for (item of items(); track item.name) {
+  <ion-item-sliding #slidingItem>
+    <ion-item-options side="start">
+      <ion-item-option
+        color="danger"
+        (click)="deleteItem(item); slidingItem.close()"
+      >
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    <ion-item>
+      <ion-label class="ion-text-nowrap">
+        {{ item.name }}
+      </ion-label>
+      @if (item.expirationDate) {
+      <ion-text>{{ item.expirationDate }}</ion-text>
+      } @else {
+      <ion-button (click)="editItem(item)">add exp</ion-button>
+      }
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option
+        color="secondary"
+        (click)="editItem(item); slidingItem.close()"
+      >
+        <ion-icon slot="icon-only" name="pencil"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  } @empty {
+  <ion-item>
+    <ion-text>No items found</ion-text>
+  </ion-item>
+  }
+</ion-list>

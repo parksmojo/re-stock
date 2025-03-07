@@ -87,6 +87,13 @@ export class Item {
     this._bought = new Date();
   }
 
+  get expirationDate(): string | null {
+    return this._expiration?.toDateString() ?? null;
+  }
+  get expirationTime(): number | null {
+    return this._expiration?.getTime() ?? null;
+  }
+
   get category(): Category {
     return this._category;
   }
