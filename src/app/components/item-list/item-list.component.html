@@ -10,15 +10,6 @@
       </ion-item-option>
     </ion-item-options>
     <ion-item>
-      <ion-badge
-        slot="end"
-        [style]="{
-          '--background': item.category.color,
-          '--color': item.category.textColor
-        }"
-      >
-        {{ item.category.name }}
-      </ion-badge>
       <ion-checkbox
         labelPlacement="end"
         justify="start"
@@ -34,6 +25,15 @@
           }
         </ion-label>
       </ion-checkbox>
+      <ion-badge
+        slot="end"
+        [style]="{
+          '--background': item.category.color,
+          '--color': item.category.textColor
+        }"
+      >
+        {{ item.category.name }}
+      </ion-badge>
     </ion-item>
     <ion-item-options side="end">
       <ion-item-option

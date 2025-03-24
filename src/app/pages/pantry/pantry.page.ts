@@ -65,9 +65,6 @@ export class PantryPage implements OnInit {
       component: ItemEditComponent,
       componentProps: {
         item,
-        showQuantity: true,
-        showCategory: true,
-        showStore: true,
         showPurpose: true,
         showBought: true,
         showExpiration: true,
@@ -80,7 +77,7 @@ export class PantryPage implements OnInit {
 
   async confirmDeleteItem(item: Item) {
     const alert = await this.alertCtrl.create({
-      header: 'Delete Recipe',
+      header: 'Delete Item',
       message: `Are you sure you want to delete ${item.name}?`,
       buttons: [
         { text: 'Cancel', role: 'cancel' },
@@ -96,6 +93,11 @@ export class PantryPage implements OnInit {
 
   deleteItem(item: Item) {
     this.db.pantry.deletePantryItem(item);
+    this.refreshItems();
+  }
+
+  listItem(item: Item) {
+    this.db.pantry.relistGroceryItem(item);
     this.refreshItems();
   }
 }

@@ -65,9 +65,12 @@
         <ion-datetime
           [id]="'datetime-' + item.name"
           presentation="date"
+          [showDefaultButtons]="true"
           [value]="item.expiration?.toISOString()"
           (ionChange)="item.expiration = convertToDate($event.detail.value)"
-        ></ion-datetime>
+        >
+          <span slot="title">Select Expiration Date</span>
+        </ion-datetime>
       </ng-template>
     </ion-modal>
   </ion-item>

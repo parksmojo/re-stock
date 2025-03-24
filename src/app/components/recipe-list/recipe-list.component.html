@@ -20,16 +20,16 @@
     </ion-item>
     <ion-item-options side="end">
       <ion-item-option
-        color="secondary"
-        (click)="editRecipe(recipe); slidingItem.close()"
-      >
-        <ion-icon slot="icon-only" name="pencil"></ion-icon>
-      </ion-item-option>
-      <ion-item-option
         color="primary"
         (click)="sendRecipe(recipe); slidingItem.close()"
       >
         <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-item-option>
+      <ion-item-option
+        color="secondary"
+        (click)="editRecipe(recipe); slidingItem.close()"
+      >
+        <ion-icon slot="icon-only" name="pencil"></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>

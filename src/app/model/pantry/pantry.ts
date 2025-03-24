@@ -69,6 +69,14 @@ export class Pantry {
     this._items = this._items.filter((i) => i !== item);
   }
 
+  public relistGroceryItem(item: Item) {
+    item.checked = false;
+    item.clearBought();
+    item.clearExpiration();
+    this.deletePantryItem(item);
+    this.addGroceryItem(item);
+  }
+
   public addRecipeToGrocery(recipe: Recipe) {
     recipe.ingredients.forEach((ingredient) => {
       const item = this._grocery.find((i) => i.equals(ingredient));

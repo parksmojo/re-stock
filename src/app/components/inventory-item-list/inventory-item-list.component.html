@@ -14,12 +14,24 @@
         {{ item.name }}
       </ion-label>
       @if (item.expirationDate) {
+      <ion-badge
+        slot="end"
+        [style]="getExpirationBadgeStyle(item.expirationDate)"
+      >
+        {{ getDaystoExpiration(item.expirationDate) }} days
+      </ion-badge>
       <ion-text>{{ item.expirationDate }}</ion-text>
       } @else {
       <ion-button (click)="editItem(item)">add exp</ion-button>
       }
     </ion-item>
     <ion-item-options side="end">
+      <ion-item-option
+        color="secondary"
+        (click)="listItem(item); slidingItem.close()"
+      >
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-item-option>
       <ion-item-option
         color="secondary"
         (click)="editItem(item); slidingItem.close()"

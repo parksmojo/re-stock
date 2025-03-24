@@ -29,7 +29,7 @@ export class FakeData {
 
         store: 'Target',
         purpose: 'Cereal',
-        expiration: new Date('2023-10-01'),
+        expiration: new Date('2025-03-30'),
       },
       {
         name: 'Chicken',
@@ -38,7 +38,7 @@ export class FakeData {
 
         store: 'Kroger',
         purpose: 'Pesto pasta, Quesadillas',
-        expiration: new Date('2023-10-05'),
+        expiration: new Date('2025-03-25'),
       },
       {
         name: 'Bread',
@@ -47,7 +47,7 @@ export class FakeData {
 
         store: 'Walmart',
         purpose: 'Sandwiches, Grilled cheese',
-        expiration: new Date('2023-10-03'),
+        expiration: new Date('2025-04-01'),
       },
       {
         name: 'Eggs',
@@ -56,7 +56,7 @@ export class FakeData {
 
         store: 'Target',
         purpose: 'Breakfast',
-        expiration: new Date('2023-10-10'),
+        expiration: new Date('2025-04-10'),
       },
     ],
     grocery: [
@@ -64,6 +64,7 @@ export class FakeData {
         name: 'Rice',
         quantity: 2,
         category: { name: 'Grains', color: '#607D8B', textColor: 'black' },
+        purpose: 'Fried rice',
         store: 'Walmart',
       },
       {
