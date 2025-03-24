@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {
   AlertController,
   IonContent,
+  IonFab,
+  IonFabButton,
+  IonFabList,
+  IonIcon,
   ModalController,
 } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -10,14 +14,22 @@ import { Item, ItemData } from 'src/app/model/item/item';
 import { InventoryItemListComponent } from '../../components/inventory-item-list/inventory-item-list.component';
 import { ItemEditComponent } from 'src/app/components/item-edit/item-edit.component';
 import { addIcons } from 'ionicons';
-import { add, pencil, trash } from 'ionicons/icons';
+import { add, pencil, trash, chevronUp } from 'ionicons/icons';
 
 @Component({
   selector: 'app-pantry',
   templateUrl: './pantry.page.html',
   styleUrls: ['./pantry.page.scss'],
   standalone: true,
-  imports: [IonContent, HeaderComponent, InventoryItemListComponent],
+  imports: [
+    IonContent,
+    HeaderComponent,
+    InventoryItemListComponent,
+    IonFab,
+    IonFabList,
+    IonFabButton,
+    IonIcon,
+  ],
 })
 export class PantryPage implements OnInit {
   items: Item[] = [];
@@ -28,7 +40,7 @@ export class PantryPage implements OnInit {
     private alertCtrl: AlertController
   ) {
     this.refreshItems();
-    addIcons({ add, trash, pencil });
+    addIcons({ chevronUp, trash, add, pencil });
   }
 
   refreshItems() {
@@ -91,13 +103,34 @@ export class PantryPage implements OnInit {
     alert.present();
   }
 
-  deleteItem(item: Item) {
+  private deleteItem(item: Item) {
     this.db.pantry.deletePantryItem(item);
     this.refreshItems();
   }
 
   listItem(item: Item) {
     this.db.pantry.relistGroceryItem(item);
+    this.refreshItems();
+  }
+
+  confirmClearPantry() {
+    this.alertCtrl
+      .create({
+        header: 'Clear Pantry',
+        message: 'Are you sure you want to clear the pantry list?',
+        buttons: [
+          { text: 'Cancel', role: 'cancel' },
+          {
+            text: 'Clear',
+            role: 'confirm',
+            handler: () => this.clearPantry(),
+          },
+        ],
+      })
+      .then((alert) => alert.present());
+  }
+  private clearPantry() {
+    this.db.pantry.clearPantryList();
     this.refreshItems();
   }
 }
