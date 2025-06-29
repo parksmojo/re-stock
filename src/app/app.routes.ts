@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -8,16 +9,18 @@ export const routes: Routes = [
   },
   {
     path: 'choose-pantry',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/choose-pantry/choose-pantry.page').then(
-        (m) => m.ChoosePantryPage
+        (m) => m.ChoosePantryPage,
       ),
   },
   {
     path: 'main',
+    canActivate: [authGuard],
     loadChildren: () =>
       import('./components/tabs/tabs.routes').then((m) => m.routes),
   },
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
-  { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: '**', redirectTo: '/' },
 ];
