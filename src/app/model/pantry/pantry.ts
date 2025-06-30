@@ -3,8 +3,6 @@ import { Item, ItemData } from '../item/item';
 import { Recipe, RecipeData } from '../recipe/recipe';
 
 export interface PantryData {
-  code: string;
-  users: string[];
   stores: string[];
   categories: Category[];
   grocery: ItemData[];
@@ -13,17 +11,13 @@ export interface PantryData {
 }
 
 export class Pantry {
-  private _code: string;
-  private _users: string[];
   private _stores: string[];
   private _categories: Category[];
   private _grocery: Item[];
   private _items: Item[];
   private _recipes: Recipe[];
 
-  constructor(creatorEmail: string, code: string) {
-    this._code = code;
-    this._users = [creatorEmail];
+  constructor() {
     this._stores = ['Any'];
     this._categories = [{ ...otherCategory }];
     this._grocery = [];
@@ -113,8 +107,7 @@ export class Pantry {
   }
 
   static fromData(data: PantryData): Pantry {
-    const pantry = new Pantry('', data.code);
-    pantry._users = data.users;
+    const pantry = new Pantry();
     pantry._stores = data.stores;
     pantry._categories = data.categories;
     pantry._grocery = data.grocery.map((item) => new Item(item));
@@ -125,8 +118,6 @@ export class Pantry {
 
   get data(): PantryData {
     return {
-      code: this._code,
-      users: this._users,
       stores: this._stores,
       categories: this._categories,
       grocery: this._grocery.map((item) => item.data),
