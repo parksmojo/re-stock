@@ -19,6 +19,11 @@ export class DbService {
     this.getUserPantryId();
   }
 
+  /**
+   * Retrieves the pantry ID associated with the currently authenticated user.
+   *
+   * @throws If there is no signed-in user.
+   */
   async getUserPantryId() {
     const usr = this.auth.getCurrentUser();
     if (!usr) {
@@ -31,6 +36,12 @@ export class DbService {
     }
   }
 
+  /**
+   * Retrieves the pantry data associated with the current pantry ID.
+   *
+   * @returns A promise that resolves to the Pantry object.
+   * @throws If the pantry ID is not initialized or the pantry is not found.
+   */
   async getPantry(): Promise<Pantry> {
     if (!this.pantryId) {
       throw new Error('Pantry not yet initialized');
@@ -47,6 +58,16 @@ export class DbService {
     await setDoc(doc(this.pantryCollection, this.pantryId), pantry);
   }
 
+  /**
+   * Sets the pantry ID for the currently authenticated user.
+   *
+   * If a `pantryId` is provided, verifies its existence in the pantry collection.
+   * If no `pantryId` is provided, creates a new pantry and assigns its ID to the user.
+   * Updates the user's document with the pantry ID.
+   *
+   * @param pantryId - (Optional) The ID of the pantry to assign to the user.
+   * @throws If there is no signed-in user or if the provided pantry ID does not exist.
+   */
   public async setUserPantry(pantryId?: string) {
     const usr = this.auth.getCurrentUser();
     if (!usr) {
